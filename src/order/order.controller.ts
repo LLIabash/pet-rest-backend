@@ -6,7 +6,9 @@ import { Order } from './order.entity';
 import { User } from 'src/user/user.entity';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { GetUser } from 'src/user/get-user.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Orders')
 @Controller('orders')
 @UseGuards(AuthGuard)
 export class OrderController {

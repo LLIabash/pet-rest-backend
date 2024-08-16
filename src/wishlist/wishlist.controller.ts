@@ -3,8 +3,9 @@ import { WishlistService } from './wishlist.service';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { GetUser } from 'src/user/get-user.decorator';
 import { User } from 'src/user/user.entity';
-import { ApiOperation, ApiParam } from '@nestjs/swagger';
+import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Wishlist')
 @Controller('wishlist')
 @UseGuards(AuthGuard)
 export class WishlistController {

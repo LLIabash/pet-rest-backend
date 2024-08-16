@@ -10,8 +10,6 @@ async function bootstrap() {
     .setTitle('API документация')
     .setDescription('Документация для API интернет-магазина')
     .setVersion('1.0')
-    .addTag('products') 
-    .addTag('categories')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

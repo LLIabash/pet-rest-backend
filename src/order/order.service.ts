@@ -69,4 +69,11 @@ export class OrderService {
     const order = await this.findOne(id);
     await this.orderRepository.remove(order);
   }
+
+  async findAllByUser(userId: number): Promise<Order[]> {
+    return this.orderRepository.find({
+      where: { user: { id: userId } },
+      relations: ['user', 'products'],
+    });
+  }
 }

@@ -8,11 +8,11 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { GetUser } from 'src/user/get-user.decorator';
 
 @Controller('orders')
+@UseGuards(AuthGuard)
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @Post()
-  @UseGuards(AuthGuard)
   async create(@Body() createOrderDto: CreateOrderDto, @GetUser() user: User): Promise<Order> {
     return this.orderService.create(createOrderDto, user);
   }
@@ -35,5 +35,10 @@ export class OrderController {
   @Delete(':id')
   async remove(@Param('id') id: number): Promise<void> {
     return this.orderService.remove(id);
+  }
+
+  @Get('history')
+  async getOrderHistory(@GetUser() user: User) {
+    return this.orderService.findAllByUser(user.id);
   }
 }

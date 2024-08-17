@@ -13,7 +13,8 @@ import { Order } from './order/order.entity';
 import { WishlistModule } from './wishlist/wishlist.module';
 import { ReviewModule } from './review/review.module';
 import { Review } from './review/review.entity';
-
+import { ExcludeFieldsInterceptor } from './interceptors/exclude-fields.interceptor';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -34,6 +35,12 @@ import { Review } from './review/review.entity';
     CategoryModule,
     WishlistModule,
     ReviewModule,
+  ],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ExcludeFieldsInterceptor,
+    },
   ],
 })
 export class AppModule {}

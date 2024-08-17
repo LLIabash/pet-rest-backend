@@ -12,8 +12,6 @@ export class CreateOrderDto {
   @ArrayNotEmpty()
   products: number[];
 
-  @ApiProperty({ description: 'Общая стоимость заказа', example: 299.99 })
-  @IsNumber()
   total: number;
 
   @ApiProperty({ description: 'Статус заказа', example: 'pending' })

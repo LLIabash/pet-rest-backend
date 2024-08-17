@@ -24,11 +24,17 @@ export class OrderService {
       throw new NotFoundException('One or more products not found');
     }
 
+    // Расчет общей стоимости заказа
+    const total = products.reduce((sum, product) => sum + product.price, 0);
+
+    // Создание и сохранение заказа
     const order = this.orderRepository.create({
       ...createOrderDto,
       products,  // Используем объекты продуктов
+      total,     // Устанавливаем рассчитанное значение
       user,
     });
+
     return await this.orderRepository.save(order);
   }
 

@@ -39,7 +39,7 @@ export class OrderController {
     return this.orderService.remove(id);
   }
 
-  @Get('history')
+  @Get('user/history')
   async getOrderHistory(@GetUser() user: User) {
     return this.orderService.findAllByUser(user.id);
   }

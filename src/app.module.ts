@@ -11,6 +11,8 @@ import { CategoryModule } from './category/category.module';
 import { Category } from './category/category.entity';
 import { Order } from './order/order.entity';
 import { WishlistModule } from './wishlist/wishlist.module';
+import { ReviewModule } from './review/review.module';
+import { Review } from './review/review.entity';
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import { WishlistModule } from './wishlist/wishlist.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User, Product, Order, Category],
+      entities: [User, Product, Order, Category, Review],
       synchronize: true,
     }),
     UsersModule,
@@ -31,6 +33,7 @@ import { WishlistModule } from './wishlist/wishlist.module';
     OrderModule,
     CategoryModule,
     WishlistModule,
+    ReviewModule,
   ],
 })
 export class AppModule {}
